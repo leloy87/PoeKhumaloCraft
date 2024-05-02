@@ -16,52 +16,225 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="~/CldvExample.styles.css" asp-append-version="true" />
+
+    <style>
+        /* Custom styles for the navbar */
+        .navbar {
+            background-color: #6495ed;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            font-family: 'Arial', sans-serif;
+            margin-right: 2rem;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+            .navbar-nav .nav-item {
+                margin-right: 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                color: #fff !important;
+                transition: color 0.3s;
+                font-size: 1.2rem;
+                font-family: 'Arial', sans-serif;
+            }
+
+                .navbar-nav .nav-link:hover {
+                    color: #bbb !important;
+                }
+
+        .navbar-toggler {
+            padding: 0.25rem 0.5rem !important;
+            border: none !important;
+            border-radius: 4px !important;
+            background-color: #fff !important;
+        }
+
+            .navbar-toggler:hover {
+                background-color: floralwhite !important;
+            }
+
+        .navbar-toggler-icon {
+            border: none !important;
+            outline: none !important;
+        }
+
+        /* Custom style to fix footer at the bottom */
+        html,
+        body {
+            height: 30%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #6495ed;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Custom style for the search bar */
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .search-input {
+            width: 300px;
+            margin-right: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+            .search-input:focus {
+                outline: none;
+                border-color: #6495ed;
+            }
+
+        .search-button {
+            padding: 8px 16px;
+            background-color: #6495ed;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .search-button:hover {
+                background-color: #4169e1;
+            }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Khumalo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">KhumaloCraft Emporium</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Existing nav links -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <!--<li class="nav-item">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                          </li>-->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                            <a class="nav-link" asp-controller="Cart" asp-action="Index">
+                                Shopping Cart
+
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MyWork">My Work</a>
+                            <a class="nav-link" asp-controller="Order" asp-action="ViewOrders">Orders</a>
                         </li>
-                    </ul>
+                        <!-- Add conditional display for admin link -->
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AdminHome">Admin</a>
+                            </li>
+                        }
+                        <!-- End of conditional display -->
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
+                                    <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link">Welcome, @User.Identity.Name!</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        <!-- End of conditional display -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MyWork">My Work</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Order" asp-action="PlaceOrder">PlaceOrder</a>
+                        </li>
+
                 </div>
             </div>
         </nav>
     </header>
+
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
-            &copy; 2024 - CldvExample - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - KhumaloCraftEmporium .
         </div>
     </footer>
+
+    @using KhumaloeApp.Models
+    @using Microsoft.AspNetCore.Identity
+    @inject SignInManager<ProductUser> SignInManager
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        // Reactive search functionality
+        $(document).ready(function () {
+            $("#searchButton").click(function () {
+                var searchTerm = $("#searchInput").val().toLowerCase();
+                // Perform filtering or redirection based on the search term
+                // Here, you can implement the logic to handle the search functionality
+                // For example, redirect to a search results page or filter the content on the current page
+            });
+        });
+    </script>
 </body>
 </html>

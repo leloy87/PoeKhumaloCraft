@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login/Signup Form</title>
+    <style>
+        /* Styles for the form container */
+        .form-container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        /* Styles for form inputs and buttons */
+        input[type=text], input[type=password], input[type=email], input[type=tel] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        .signup-options {
+            margin-top: 20px;
+        }
+
+            .signup-options a {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+            /* Styles for the signup link */
+            p.signup-link {
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+            }
+
+                p.signup-link a {
+                    color: #4CAF50;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: color 0.3s ease;
+                }
+
+                    p.signup-link a:hover {
+                        color: #45a049;
+                    }
+
+            /* Styles for the forgot password link */
+            p.forgot-link {
+                margin-top: 10px;
+                text-align: center;
+                font-size: 14px;
+            }
+
+                p.forgot-link a {
+                    color: #555;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                }
+
+                    p.forgot-link a:hover {
+                        color: #333;
+                    }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <!-- Login Form -->
+        <form id="loginForm">
+            <h2>Login</h2>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+            <p class="signup-link">Don't have an account? <a href="#" onclick="toggleForm()">Signup</a></p>
+            <p class="forgot-link"><a href="#" onclick="showResetPasswordForm()">Forgot your password?</a></p>
+        </form>
+
+        <!-- Signup Form - initially hidden -->
+        <form id="signupForm" style="display:none;">
+            <h2>Signup</h2>
+            <input type="text" placeholder="Name" name="name" required>
+            <input type="text" placeholder="Surname" name="surname" required>
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="tel" placeholder="Phone Number" name="phone" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+            <button type="submit">Signup</button>
+            <p class="signup-link">Already have an account? <a href="#" onclick="toggleForm()">Login</a></p>
+            <div class="signup-options">
+                <a href="#"><img src="facebook_icon.png" alt="Facebook"></a>
+                <a href="#"><img src="gmail_icon.png" alt="Gmail"></a>
+                <a href="#"><img src="google_icon.png" alt="Google"></a>
+            </div>
+            <p class="forgot-link"><a href="#" onclick="showResetPasswordForm()">Forgot your password?</a></p>
+        </form>
+
+        <!-- Reset Password Form - initially hidden -->
+        <form id="resetPasswordForm" style="display:none;">
+            <h2>Reset Password</h2>
+            <input type="email" placeholder="Email" name="resetEmail" required>
+            <button type="submit">Reset Password</button>
+            <p class="forgot-link"><a href="#" onclick="hideResetPasswordForm()">Cancel</a></p>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle between login and signup forms
+        function toggleForm() {
+            var loginForm = document.getElementById("loginForm");
+            var signupForm = document.getElementById("signupForm");
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                signupForm.style.display = "none";
+            } else {
+                loginForm.style.display = "none";
+                signupForm.style.display = "block";
+            }
+        }
+
+        // Function to show the reset password form
+        function showResetPasswordForm() {
+            var resetPasswordForm = document.getElementById("resetPasswordForm");
+            resetPasswordForm.style.display = "block";
+        }
+
+        // Function to hide the reset password form
+        function hideResetPasswordForm() {
+            var resetPasswordForm = document.getElementById("resetPasswordForm");
+            resetPasswordForm.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
+
+

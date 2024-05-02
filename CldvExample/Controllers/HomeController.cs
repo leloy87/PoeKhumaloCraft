@@ -1,15 +1,19 @@
-using CldvExample.Models;
+using KhumaloeApp.Data;
+using KhumaloeApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace CldvExample.Controllers
+namespace KhumaloeApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
@@ -32,6 +36,16 @@ namespace CldvExample.Controllers
         }
         public IActionResult MyWork()
         {
+            var products = _context.KhProducts.ToList(); // Assuming _context is your DbContext
+            return View(products);
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Cart()
+        {
             return View();
         }
 
@@ -42,3 +56,4 @@ namespace CldvExample.Controllers
         }
     }
 }
+

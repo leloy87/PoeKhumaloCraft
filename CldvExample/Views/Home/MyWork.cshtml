@@ -1,215 +1,312 @@
-﻿
+﻿@using KhumaloeApp.Models
+
+@model List<KhProducts>
 @{
     ViewData["Title"] = "MyWork";
 }
 
 <h1>My Work</h1>
-<html>
 
-<
+<!-- Include CSS -->
+<style>
 
-<body class="sub_page">
-    
+    #productContainer {
+        margin-top: 30px;
+    }
 
-    <!-- my work section -->
+    .product-category {
+        margin-top: 50px;
+    }
 
-    <section class="mywork_section ">
-        <div class="container">
-            <div class="heading_container heading_center">
-                <h2>My Work <span>Portfolio</span></h2>
-            </div>
+        .product-category h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-            <h1>My Work</h1>
+    .product-item {
+        margin-bottom: 30px;
+    }
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/Handcrafted Jewelry Design.webp" class="card-img-top" alt="Jewelry">
-                        <div class="card-body">
-                            <h5 class="card-title">Jewelry</h5>
-                            <p class="card-text">from $50 ea</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/Artisanal Leather Goods.webp" class="card-img-top" alt="Leather Goods">
-                        <div class="card-body">
-                            <h5 class="card-title">Leather Goods</h5>
-                            <p class="card-text">$100 each</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="images/Artisanal Pottery Creations.webp" class="card-img-top" alt="Pottery">
-                        <div class="card-body">
-                            <h5 class="card-title">Pottery</h5>
-                            <p class="card-text">$75 each</p>
-                        </div>
-                    </div>
-                </div>
-            </div> >
-            See More
-            </a>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    </section>
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
 
-    <!-- end my work section -->
-    <!-- info section -->
+        .product-card:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
 
-    <section class="info_section ">
-        <div class="info_container layout_padding2">
-            <div class="container">
-                <div class="info_logo">
-                    <a class="navbar-brand" href="index.html"> KhumaloCraft<span>Emporium</span> </a>
-                </div>
-                <div class="info_main">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-2">
-                            <div class="info_link-box">
-                                <h5>
-                                    Useful Links
-                                </h5>
-                                <ul>
-                                    <li class=" active">
-                                        <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="">
-                                        <a class="" href="aboutus.html">About Us </a>
-                                    </li>
-                                    <li class="">
-                                        <a class="" href="service.html">Services </a>
-                                    </li>
-                                    <li class="">
-                                        <a class="" href="mywork.html"> My Work </a>
-                                    </li>
-                                    <li class="">
-                                        <a class="" href="contactus.html"> Contact Us </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 ">
-                            <h5>
-                                JEWELRY
-                            </h5>
-                            <p>
-                                Handcrafted Jewelry Design
-                            </p>
-                        </div>
-                        <div class="col-md-3 mx-auto  ">
-                            <h5>
-                                social media
-                            </h5>
-                            <div class="social_box">
-                                <a href="#">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-x" aria-hidden="true"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-tiktok" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h5>
-                                Our craft corner
-                            </h5>
-                            <p>
-                                Our Craft Corner at KhumaloCraft Emporium is a curated collection of handcrafted treasures,
-                                each piece telling a unique story of skill and creativity.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="info_bottom">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <div class="info_contact ">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#" class="link-box">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <span>
-                                                Location
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <a href="https://maps.app.goo.gl/vnqY2dwfc3QviWN86" class="link-box">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <span>
-                                                Call +27 12-009-0011
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#" class="link-box">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <span>
-                                                khumalocraftemp@gmail.com
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="info_form ">
-                                <form action="">
-                                    <input type="email" placeholder="Enter Your Email" />
-                                    <button>
-                                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+    .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        max-height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+        .card-img-top:hover {
+            transform: scale(1.1);
+        }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .btn-custom {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<!-- Product Grid --><!-- Display Database Products -->
+<h2 class="text-center mb-4">Database Products</h2>
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4 mb-4 product-item" data-category="@product.Category">
+            <div class="card h-100 product-card">
+                <img src="@Url.Content(product.ImageUrl)" alt="@product.Name" />
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text">@product.Price</p>
+                    @if (product.Availability)
+                    {
+                        <p class="card-text text-success">Available</p>
+                    }
+                    else
+                    {
+                        <p class="card-text text-danger">Unavailable</p>
+                    }
+                    <!-- Add to Cart button -->
+                    <button class="btn btn-custom add-to-cart-btn" data-product-id="@product.ProductId">Add to Cart</button>
                 </div>
             </div>
         </div>
-    </section>
+    }
+</div>
 
-    <!-- end info section -->
-    <!-- footer section -->
-    <footer class="footer_section">
-        <div class="container">
-            <p>
-                &copy; <span id="displayYear"></span> 2024 All Rights Reserved By KhumaloCraft Emporium .
-
+<div class="row" id="productContainer">
+    <div class="col-md-12 product-category">
+        <h2>Jewelry</h2>
+    </div>
+</div>
+<!-- Product 1 -->
+<div class="col-md-4 mb-4 product-item">
+    <div class="card h-100 product-card">
+        <img src="~/images/neckp.jfif" class="card-img-top" alt="the etheral set">
+        <div class="card-body">
+            <h5 class="card-title">The Etheral Set</h5>
+            <p class="card-text">
+                Make a stunning impression with our vibrant neckpiece set. Handcrafted to perfection,
+                this opulent piece of jewelry exudes sophistication and glamour. Its intricate design and radiant finish
+                effortlessly elevate any outfit, making it the perfect accessory for special occasions and everyday wear..
             </p>
+            <p class="card-text">R1200.00</p>
+            <button class="btn btn-custom add-to-cart-btn" data-product-id="1">Add to Cart</button>
         </div>
-    </footer>
-    <!-- footer section -->
-    <!-- jQery -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- popper js -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.js"></script>
-    <!-- owl slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <!--  OwlCarousel 2 - Filter -->
-    <script src="https://huynhhuynh.github.io/owlcarousel2-filter/dist/owlcarousel2-filter.min.js"></script>
-    <!-- nice select -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.app.goo.gl/vnqY2dwfc3QviWN86"></script>
-    <!-- End Google Map -->
+    </div>
+</div>
 
-</body>
+<!-- Product 2 -->
+<div class="col-md-4 mb-4 product-item" data-category="morderna nose piece">
+    <div class="card h-100 product-card">
+        <img src="~/images/nose.jfif" class="card-img-top" alt="Product 2">
+        <div class="card-body">
+            <h5 class="card-title">Moderna Nose Piece</h5>
+            <p class="card-text">
+                One handcrafted 24k gold plated nose piece jewelry. Crafted from premium quality gold, this delicate piece of jewelry features
+                intricate detailing and a subtle shine, adding a touch of elegance to your look. Whether worn alone or paired with other accessories,
+                this timeless nose ring is sure to make a statement.
+            </p>
+            <p class="card-text">R200.00</p>
+            <button class="btn btn-custom add-to-cart-btn" data-product-id="2">Add to Cart</button>
+        </div>
+    </div>
+</div>
 
-</html>
+<!-- Product 3 -->
+<div class="col-md-4 mb-4 product-item" data-category="limited edition ring">
+    <div class="card h-100 product-card">
+        <img src="~/images/ring.jfif" class="card-img-top" alt="Product 3">
+        <div class="card-body">
+            <h5 class="card-title">Limited Edition Gold Ring</h5>
+            <p class="card-text">
+                Each ring is a testament to exquisite craftsmanship and attention to detail, showcasing the inherent beauty of gold in its purest form.
+                Delicately designed and expertly polished, our gold rings radiate sophistication and charm, making them the perfect statement piece for any occasion.
+                Elevate your style with a touch of luxury and grace, and let our handcrafted gold ring become a cherished heirloom to be treasured for generations to come.
+            </p>
+            <p class="card-text">R940.00</p>
+            <button class="btn btn-custom add-to-cart-btn" data-product-id="3">Add to Cart</button>
+        </div>
+    </div>
+</div>
 
+<div class="row" id="productContainer">
+    <div class="col-md-12 product-category">
+        <h2>More products</h2>
+    </div>
+</div>
+
+<!-- Product 4 -->
+<div class="col-md-4 mb-4 product-item" data-category="pottery">
+    <div class="card h-100 product-card">
+        <img src="~/images/pot1.jfif" class="card-img-top" alt="Product 4">
+        <div class="card-body">
+            <h5 class="card-title">Artisanal Ceramic Vase</h5>
+            <p class="card-text">Elevate your home decor with our artisan ceramic vase. Hand-thrown and glazed to perfection, this vase boasts a timeless elegance that effortlessly enhances any space.</p>
+            <p class="card-text">R600.00 ea</p>
+            <button class="btn btn-custom add-to-cart-btn" data-product-id="4">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- Product 5 -->
+<div class="col-md-4 mb-4 product-item" data-category="more products">
+    <div class="card h-100 product-card">
+        <img src="~/images/bag.jfif" class="card-img-top" alt="Product 5">
+        <div class="card-body">
+            <h5 class="card-title">Handcrafted Leather Carry Bag</h5>
+            <p class="card-text">
+                Elevate your everyday essentials with our handcrafted crocodile leather bag. Meticulously crafted by skilled artisans,
+                each bag exudes timeless elegance and unmatched quality.
+            </p>
+            <p class="card-text">R500.00</p>
+            <button class="btn btn-custom add-to-cart-btn" data-product-id="5">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- Product 6 -->
+<div class="col-md-4 mb-4 product-item" data-category="more products">
+    <div class="card h-100 product-card">
+        <img src="~/images/textile.jfif" class="card-img-top" alt="Product 6">
+        <div class="card-body">
+            <h5 class="card-title">1943 Textile Artwork</h5>
+            <p class="card-text">
+                Add a pop of color and texture to your living space with this handmade textile artwork mat.
+                Intricately designed and skillfully stitched, each artwork adds personality and charm to your home decor and living spaces.
+            </p>
+            <p class="card-text">R1190.00</p>
+            <button class="btn btn-custom add-to-cart-btn" data-product-id="6">Add to Cart</button>
+        </div>
+    </div>
+</div>
+!-- Add jQuery for filtering products by category -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        // Add to Cart button click event
+        $('.add-to-cart-btn').click(function () {
+            var productId = $(this).data('product-id');
+
+            // Send AJAX request to add product to cart
+            $.ajax({
+                url: '@Url.Action("AddToCart", "ShoppingCart")',
+                type: 'POST',
+                data: { productId: productId, quantity: 1 },
+                success: function (response) {
+                    // Redirect to shopping cart page
+                    window.location.href = '@Url.Action("Index", "ShoppingCart")';
+                },
+                error: function (xhr, status, error) {
+                    // Display error message if request fails
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+
+    $(document).ready(function () {
+        // Function to calculate and display the total price
+        function updateTotalPrice() {
+            var totalPrice = 0;
+            $('.product-item').each(function () {
+                var quantity = parseInt($(this).find('.quantity-input').val()); // Parse quantity as integer
+                var priceText = $(this).find('.card-text').text().trim(); // Get the text containing the price
+                console.log('Quantity:', quantity);
+                console.log('Price Text:', priceText);
+                // Use regular expression to extract the price
+                var priceMatches = priceText.match(/[\d,.]+/);
+                if (priceMatches && priceMatches.length > 0) {
+                    var price = parseFloat(priceMatches[0].replace(',', '.')); // Parse the extracted price as float
+                    console.log('Parsed Price:', price);
+                    totalPrice += quantity * price;
+                }
+            });
+            console.log('Total Price:', totalPrice);
+            $('#total-price').text('R' + totalPrice.toFixed(2)); // Display total price
+        }
+
+        // Event listener for quantity change
+        $('.quantity-input').change(function () {
+            updateTotalPrice();
+        });
+
+        // Initial update of total price
+        updateTotalPrice();
+    });
+
+    // Filter products by category
+    $(document).ready(function () {
+        $('#categoryButtons button').click(function () {
+            var category = $(this).data('category');
+            $('.product-item').hide();
+            $('.featured-product-item').hide(); // Hide all featured products
+            if (category === 'all') {
+                $('.product-item').show();
+                $('.featured-product-item').show(); // Show all featured products
+            } else {
+                $('.product-item[data-category="' + category + '"]').show();
+                $('.featured-product-item[data-category="' + category + '"]').show(); // Show featured products matching the selected category
+            }
+        });
+
+        // Filter products by price range
+        $('.price-filter').click(function () {
+            var minPrice = parseFloat($(this).data('min-price'));
+            var maxPrice = parseFloat($(this).data('max-price'));
+            $('.product-item').hide();
+            $('.featured-product-item').hide(); // Hide all products
+            $('.product-item').each(function () {
+                var priceText = $(this).find('.card-text').text().trim(); // Get the text containing the price
+                var price = parseFloat(priceText.substring(priceText.indexOf('R') + 1)); // Extract the price value
+                if (!isNaN(price) && price >= minPrice && price <= maxPrice) {
+                    $(this).show();
+                }
+            });
+            $('.featured-product-item').each(function () {
+                var priceText = $(this).find('.card-text').text().trim(); // Get the text containing the price
+                var price = parseFloat(priceText.substring(priceText.indexOf('R') + 1)); // Extract the price value
+                if (!isNaN(price) && price >= minPrice && price <= maxPrice) {
+                    $(this).show();
+                }
+            }); // Show products within the selected price range
+        });
+
+    });
+</script>

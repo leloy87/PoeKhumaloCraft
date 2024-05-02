@@ -1,0 +1,39 @@
+﻿@model KhumaloeApp.Models.Cart
+
+<h2>Place Order</h2>
+
+@if (Model.CartItem.Any())
+{
+    <form asp-controller="Order" asp-action="PlaceOrder" method="post">
+        <input type="hidden" name="CartId" value="@Model.CartId" />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItem)
+                {
+                    <tr>
+                        <td>@item.KhProducts.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>R@(item.KhProducts.Price)</td>
+                        <td>R@(item.Quantity * item.KhProducts.Price)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <h4>Total Price: R@(Model.TotalPrice)</h4>
+            <button type="submit" class="btn btn-primary">Confirm Order</button>
+        </div>
+    </form>
+}
+else
+{
+    <p>No items in the cart.</p>
+}
