@@ -1,27 +1,36 @@
-﻿@model AdminHomeModel
-@{
-    ViewData["Title"] = "Admin Home";
-}
+﻿@model List<KhumaloCraftWeb.Models.Products>
 
-<h1 class="text-center mb-4">Welcome to the Admin Home</h1>
+<a asp-controller="Admin" asp-action="AdminDashboard" class="btn btn-primary">Back</a>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Product Management</h5>
-                <p class="card-text">Add, edit, or delete products from the store.</p>
-                <a asp-controller="Admin" asp-action="ViewProducts" class="btn btn-primary">Manage Products</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Order Management</h5>
-                <p class="card-text">View and process customer orders.</p>
-                <a asp-controller="Admin" asp-action="ViewOrders" class="btn btn-primary">Manage Orders</a>
-            </div>
-        </div>
-    </div>
-</div>
+<h2>Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.Category</td>
+                <td>
+                    <form asp-controller="Admin" asp-action="DeleteProduct" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                        <input type="hidden" name="id" value="@product.ProductId" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Admin" asp-action="InsertProduct" class="btn btn-success">Add New Product</a>

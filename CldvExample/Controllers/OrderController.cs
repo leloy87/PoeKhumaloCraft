@@ -15,7 +15,7 @@ namespace KhumaloeApp.Controllers
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ProductUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
         public OrderController(ApplicationDbContext context, UserManager<ProductUser> userManager)
         {
@@ -31,24 +31,24 @@ namespace KhumaloeApp.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             // Retrieve the user's shopping cart
-            var shoppingCart = await _context.Cart
+            var Cart = await _context.Cart
                 .Include(sc => sc.CartItem)
                 .ThenInclude(sci => sci.KhProducts)
                 .FirstOrDefaultAsync(sc => sc.UserId == user.Id);
 
-            return View(shoppingCart);
+            return View(Cart);
         }
 
         // Action to process order
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> PlaceOrder(int CartId)
+        public async Task<IActionResult> PlaceOrder(int CartId, Cart Cart)
         {
             // Retrieve the current user
             var user = await _userManager.GetUserAsync(User);
 
             // Retrieve the user's shopping cart
-            var Cart = await _context.Cart
+            var shoppingCart = await _context.Cart
                 .Include(sc => sc.CartItem)
                 .ThenInclude(sci => sci.KhProducts)
                 .FirstOrDefaultAsync(sc => sc.UserId == user.Id && sc.CartId == CartId);
@@ -72,16 +72,16 @@ namespace KhumaloeApp.Controllers
                 ModelState.AddModelError(string.Empty, "Some products in your cart are no longer available. Please review your order.");
 
                 // Reload the shopping cart
-                Cart = await _context.Cart
+                shoppingCart = await _context.Cart
                     .Include(sc => sc.CartItem)
                     .ThenInclude(sci => sci.KhProducts)
                     .FirstOrDefaultAsync(sc => sc.UserId == user.Id && sc.CartId == CartId);
 
-                return View("PlaceOrder", Cart);
+                return base.View("PlaceOrder", Models.Cart);
             }
 
             // Calculate total amount
-            decimal totalAmount = Cart.CartItem.Sum(item => item.Quantity * item.KhProducts.Price);
+            decimal totalAmount = Models.Cart.CartItem.Sum(item => item.Quantity * item.KhProducts.Price);
 
             // Create order
             var order = new Order
@@ -89,9 +89,9 @@ namespace KhumaloeApp.Controllers
                 UserId = user.Id,
                 OrderDate = DateTime.Now,
                 TotalAmount = totalAmount,
-                OrderItems = Cart.CartItem.Select(item => new OrderItem
+                OrderItems = Models.Cart.CartItem.Select(item => new OrderItem
                 {
-                    ProductId = item.KhProducts.ProductId,
+                    ProductId = item.KhProductId,
                     Quantity = item.Quantity,
                     UnitPrice = item.KhProducts.Price
                 }).ToList()
@@ -116,7 +116,7 @@ namespace KhumaloeApp.Controllers
         {
             // Get the order with the specified id
             var order = await _context.Order
-                .Include(o => o.OrderItems) // Include related order items
+                .Include(o => o.OrderItem) // Include related order items
                 .ThenInclude(oi => oi.KhProducts) // Include related products
                 .FirstOrDefaultAsync(o => o.OrderId == id);
 
@@ -137,7 +137,7 @@ namespace KhumaloeApp.Controllers
 
             // Retrieve orders for the current user
             var orders = await _context.Order
-                .Include(o => o.OrderItems) // Include related order items
+                .Include(o => o.OrderItem) // Include related order items
                 .ThenInclude(oi => oi.KhProducts) // Include related products
                 .Where(o => o.UserId == user.Id)
                 .ToListAsync();

@@ -20,6 +20,7 @@ namespace KhumaloeApp.Models
         public decimal TotalAmount { get; set; }
         public OrderStatus Status { get; set; } // Status of the order
         public List<OrderItem> OrderItems { get; set; }
+        public object OrderItem { get; internal set; }
     }
 
 }
